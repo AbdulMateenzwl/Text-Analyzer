@@ -45,7 +45,11 @@ export default function TextForm(props) {
 
     // function to count words in string
     function countWords() {
-        return text.trim().split(/\s+/).length;
+        let count = text.trim().split(/\s+/).length;
+        if (text === '') {
+            count = 0;
+        }
+        return count;
     }
 
     function ReplaceAllTextfunction() {
@@ -81,7 +85,7 @@ export default function TextForm(props) {
                 <p>{countWords()} words</p>
                 <p> Characters ( with spaces ) : {text.length}</p>
                 <p> Characters ( with spaces ) : {text.replace(/\s/g, '').length}</p>
-                <p> Time to Read : {0.008 * countWords()}</p>
+                <p> Time to Read : {Math.floor(0.008 * countWords())} minutes {Math.floor((0.008 * countWords() * 60 ) % 60)} seconds</p>
             </div>
 
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

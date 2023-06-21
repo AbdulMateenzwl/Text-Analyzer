@@ -84,7 +84,7 @@ export default function TextForm(props) {
                 <h2>Text Summary </h2>
                 <p>{countWords()} words</p>
                 <p> Characters ( with spaces ) : {text.length}</p>
-                <p> Characters ( with spaces ) : {text.replace(/\s/g, '').length}</p>
+                <p> Characters ( without spaces ) : {text.replace(/\s/g, '').length}</p>
                 <p> Time to Read : {Math.floor(0.008 * countWords())} minutes {Math.floor((0.008 * countWords() * 60 ) % 60)} seconds</p>
             </div>
 

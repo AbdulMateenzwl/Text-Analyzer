@@ -54,10 +54,10 @@ export default function TextForm(props) {
 
     function ReplaceAllTextfunction() {
         setText(text.replaceAll(findText, replaceText));
-        ClearReplaceInputFields();        
+        ClearReplaceInputFields();
     }
 
-    function ClearReplaceInputFields(){
+    function ClearReplaceInputFields() {
         setFindText('');
         setReplaceText('');
     }
@@ -65,6 +65,10 @@ export default function TextForm(props) {
     function ReplaceOneTextfunction() {
         setText(text.replace(findText, replaceText));
         ClearReplaceInputFields();
+    }
+
+    function RemoveExtraSpacesfunction() {
+        setText(text.split(/[ ]+/).join(' '));
     }
 
     return (
@@ -78,6 +82,7 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-1 my-1" onClick={handleDownClick}>Convert to Lowercase</button>
                 <button className="btn btn-primary mx-1 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Replace Text</button>
                 <button className="btn btn-primary mx-1 my-1" id='copy-btn' onClick={handleCopyClick}>Copy Text</button>
+                <button className="btn btn-primary mx-1 my-1" id='copy-btn' onClick={RemoveExtraSpacesfunction}>Remove Extra Spaces</button>
                 <button className="btn btn-danger mx-1 my-1" onClick={handleClearClick}>Clear Text</button>
             </div>
             <div className="container">
@@ -85,7 +90,7 @@ export default function TextForm(props) {
                 <p>{countWords()} words</p>
                 <p> Characters ( with spaces ) : {text.length}</p>
                 <p> Characters ( without spaces ) : {text.replace(/\s/g, '').length}</p>
-                <p> Time to Read : {Math.floor(0.008 * countWords())} minutes {Math.floor((0.008 * countWords() * 60 ) % 60)} seconds</p>
+                <p> Time to Read : {Math.floor(0.008 * countWords())} minutes {Math.floor((0.008 * countWords() * 60) % 60)} seconds</p>
             </div>
 
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
